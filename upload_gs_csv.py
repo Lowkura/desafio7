@@ -8,8 +8,8 @@ def up_gs_csv():
     credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secret_cs.json', scope)
     client = gspread.authorize(credentials)
 
-    spreadsheet = client.open('lista_jobs')
+    spreadsheet = client.open('nome_da_planilha_em_seu_driver')
 
-    with open('jobs.csv', 'r') as file_obj:
+    with open('nome_do_arquivo_a_ser_upado.csv', 'r') as file_obj:
         content = file_obj.read()
         client.import_csv(spreadsheet.id, data=content)
