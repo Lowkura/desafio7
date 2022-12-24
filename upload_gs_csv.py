@@ -5,11 +5,11 @@ def up_gs_csv():
     scope = ["https://spreadsheets.google.com/feeds", 'https://www.googleapis.com/auth/spreadsheets',
              "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
 
-    credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secret_cs.json', scope)
+    credentials = ServiceAccountCredentials.from_json_keyfile_name('client_secret.json', scope)
     client = gspread.authorize(credentials)
 
     spreadsheet = client.open('nome_da_planilha_em_seu_driver')
 
-    with open('nome_do_arquivo_a_ser_upado.csv', 'r') as file_obj:
+    with open('jobs.csv', 'r') as file_obj:
         content = file_obj.read()
         client.import_csv(spreadsheet.id, data=content)
